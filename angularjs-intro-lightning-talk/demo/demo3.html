@@ -1,0 +1,44 @@
+<html ng-app="todoApp">
+<head>
+  <title>Demo 3</title>
+
+  <link href="css/bootstrap.css" rel="stylesheet"/>
+
+  <style type="text/css">
+    .completed-true {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body ng-controller="TodoCtrl">
+  <div class="container">
+    <div class="page-header">
+      <h1>Todo App</h1>
+    </div>
+     <div class="row">
+      <div class="col-xs-4">
+        <input type="text" ng-model="newTask" class="form-control" placeholder="Enter Task"/> 
+      </div>
+      <button ng-click="addTask()" class="btn btn-primary btn-sm">Add</button>
+    </div>
+    <br/>
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="todo in todos">       
+        <labeL class="checkbox-inline completed-{{todo.done}}">
+          <input type="checkbox" ng-checked="todo.done" ng-model="todo.done" />
+          {{todo.text}}
+        </labeL>
+      </li>
+    </ul>
+    
+    <div class="row">
+      <div class="col-xs-4">
+        <button ng-click="clearCompleted()" class="btn btn-default btn-sm">Clear Completed</button>
+      </div>
+      
+    </div>
+  </div>
+  <script src="js/angular.js"></script>
+  <script src="js/todo_app.js"></script>
+</body>
+</html>

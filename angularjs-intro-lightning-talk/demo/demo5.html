@@ -1,0 +1,32 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="css/floatlabel.css">
+</head>
+<body ng-app="floatLabelApp">
+
+  <section class="container"> 
+    <h1 class="title">Contact Me</h1>
+    <form id="form" class="form" action="#" method="get">
+      <input type="text" placeholder="Your Name" id="name" name="name" tabindex="1" float-label />
+      <input type="email" placeholder="Your Email" id="email" name="email" tabindex="2" float-label />
+      <textarea placeholder="Message…" id="message" name="message" tabindex="3" float-label ></textarea>
+
+      <input type="submit" value="Send Message" id="submit"/>
+    </form>
+  </section>
+
+  <script src="js/angular.js"></script>
+  <script src="js/float_label.js"></script>
+</body>
+</html>

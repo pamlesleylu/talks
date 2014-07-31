@@ -1,0 +1,50 @@
+<html ng-app="directivesApp">
+<head>
+  <title>Demo 4</title>
+
+  <link href="css/bootstrap.css" rel="stylesheet"/>
+
+  <style type="text/css">
+  .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+  </style>
+
+</head>
+<body ng-controller="MyCtrl">
+  <div class="container">
+    <div class="page-header">
+      <h1>Directives</h1>
+    </div>
+
+    <alert type="alertType">Summer Photos!</alert>
+
+    <carousel interval="myInterval">
+      <slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto; height: 405px;">
+        <div class="carousel-caption">
+          <p>{{slide.text}}</p>
+        </div>
+      </slide>
+    </carousel>
+    
+  </div>
+  <script src="js/angular.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/ui-bootstrap-tpls.js"></script>
+  <script type="text/javascript">
+  var app = angular.module('directivesApp', ['ui.bootstrap']);
+
+  app.controller('MyCtrl', function($scope){
+    $scope.alertType = 'success';
+    $scope.myInterval = 2000;
+
+    $scope.slides = [
+      { active: true, image: 'images/summer1.jpg', text: 'Summer 1' },
+      { active: false, image: 'images/summer2.jpg', text: 'Summer 2' },
+      { active: false, image: 'images/summer3.jpg', text: 'Summer 3' },
+      { active: false, image: 'images/summer4.jpg', text: 'Summer 4' },
+    ];
+  });
+
+  </script>
+</body>
+</html>

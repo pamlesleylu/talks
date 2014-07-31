@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>AngularJS</title>
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides" >
+				
+				<section data-background="#888888">
+					<img src="images/AngularJS-large.png" alt="AngularJS" style="padding: 10px; border-width: 10px;"/>
+					<h2>HTML enhanced for web apps!</h2>
+					<aside class="notes">
+						Today i will discuss
+						<ul>
+							<li>What AngularJS is</li>
+							<li>Hello, World example of AngularJS</li>
+							<li>What makes AngularJS cool</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section data-background="#007777">
+					<section>
+						<h2>A backstory...</h2>
+						<aside class="notes">
+							History of Angular
+						</aside>
+					</section>
+					<section>
+						<h2>In 2009...</h2>
+						<div class="fragment" data-fragment-index="1">
+							<img src="images/mhevery.jpeg" alt="Misko Hevery">
+							<br/>
+							<a href="https://twitter.com/mhevery">@mhevery</a>
+						</div>
+						<aside class="notes">
+							<ul>
+								<li>Back in 2009, Misko Hevery and 2 began working on an internal project called Google Feedback</li>
+								<li>3 devs were working on Google Feedback</li>
+								<li>6 months and 17,000 lines of codes later</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<div>
+							<img src="images/y_u_so_hard.jpg" alt="Frustrated developer" width="60%">
+						</div>
+						<aside class="notes">
+							<ul>
+								<li>Misko began to grow frustrated with how difficult it was to test and modify the cod</li>
+								<li>Misko made a bet with his manager </li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<div><img src="images/tough_developer.jpg" alt="Tough developer"  width="60%"></div>
+						<aside class="notes">
+							<ul>
+								<li>that he could rewrite the entire app using his side project getAngular in 2 weeks</li>
+								<li>So did he win the bet?</li>
+								<li></li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<div><img src="images/one_does_not_simply.jpg" alt="Code Rewrite"  width="60%"></div>
+						<aside class="notes">
+							<ul>
+								<li>No! Rewriting 17,000 lines of codes in 2 weeks is absurd!</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<div><img src="images/most_amazing_man.jpg" alt="Amazing Developer"  width="60%"></div>
+						<aside class="notes">
+							<ul>
+								<li>He was still able to finish the app in 3 weeks</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<div><img src="images/codes_chart.png" alt="Lines of Code Comparison"  width="60%"></div>
+						<aside class="notes">
+							code was just 1,500 lines long. Eventually, he's manager took notice and AngularJS was born.
+						</aside>
+					</section>
+				</section>
+
+				<section data-background="#4d7e65">
+					<section>
+						<h2>What is AngularJS?</h2>
+						<div class="fragment" data-fragment-index="1">MVW JavaScript Framework</div>
+						<aside class="notes">
+							<ul>
+								<li>I assume that most of you has heard of MVC</li>
+								<li>MVC is a really old architectural pattern that helps in the separation of concerns</li>
+								<li>several spinoffs like MVVM and MVP</li>
+								<li>Stands for model view whatever</li>
+								<li>Why do we need an architectural pattern? Isn't it done at the server-side already? Why do we need to port it to the client-side?</li>
+
+								<li>recent years - browser wars - JS faster</li>
+								<li>there are a lot more things that we can do in the browser</li>
+								<li>a lot more things mean - longer code</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/typical_webapp.png" alt="Typical Web Application">
+						<aside class="notes">
+							<ul>
+								<li>JS is hard to maintain - global variables, dynamic types</li>
+								<li>This is a typical web application. Business logic and DOM manipulation code are usually inside one file</li>
+								<li>It feels like a kludge when you code like this</li>
+								<li>So what we want is...</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<img src="images/modularized_webapp.png" alt="Modularized Web Application">
+						<aside class="notes">
+							<ul>
+								<li>...modularized code</li>
+								<li>cleaner code with a separation of concerns</li>
+								<li>HTML stay clean for UI, business logic only in one JS module, maybe separation of UI behaviors based on JS</li>
+								
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h2>Principles</h2>
+
+						<div style="display: flex; width: 100%;">
+							<div style="flex: 1">
+								<h5>Structure</h5>
+								<img src="images/structure.jpg" alt="Structure" width="100%"/>
+								<span style="font-size:10px;">Source: http://theconstructor.org/structural-engg/analysis/structural-design-process/1673</span>
+							</div>
+							<div style="flex: 1">
+								<h5>Testability</h5>
+								<img src="images/testability.png" alt="Testability" width="100%" />
+								<span style="font-size:10px;">Source: http://cartoontester.blogspot.com/2012/02/testability-explained.html</span>
+							</div>
+							<div style="flex: 1">
+								<h5>D.R.Y.</h5>
+								<img src="images/dry.png" alt="DRY" width="100%"/>
+								<span style="font-size:10px;">Source: http://phillihp.com/2011/06/22/learn-object-oriented-php-ruby/</span>
+							</div>
+						</div>
+						<aside class="notes">
+							
+							<ul>
+								<li>If we do these, we'll be able to recognize these benefits</li>
+								<li>Structure of code - defines numerous concepts to properly organize your web application into modules, services, factories, and directives</li>
+								<li>Reusability - enhances HTML by attaching directives, new tags and attributes</li>
+								<li>Testability - dependency injection, mocks</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section data-background="#5FA7C6">
+					<section>
+						<h2>Hello, Angular! <button onclick="window.open('demo/demo1.html');return false;">Demo</button></h2>
+						
+						<pre class="fragment" data-fragment-index="1"><code data-trim contenteditable>
+<div ng-app>
+	<input ng-model="name" />
+	<span ng-show="name">Hello, {{name}}</span>
+</div>
+						</code></pre>
+						<aside class="notes">
+							short code, no JavaScript, there are several interesting things in the HTML
+						</aside>
+					</section>
+					<section>
+						<h3>Anatomy of the 'Hello, Angular' App</h3>
+						<div>
+							<img src="images/hello_anatomy.png" alt="Hello, Angular Anatomy">
+						</div>
+						<aside class="notes">
+							<ul>
+								<li>directives - new kinds of markups, special behavior to attributes or elements</li>
+								<li>ng-app - directive that automatically initializes the application</li>
+								<li>ng-model - directive stores/updates the value of the input field into/from a variable </li>
+								<li> double curly braces {{ expression  }} - JavaScript-like code snippet that allows to read and write variables</li>
+								<li>template - HTML file</li>
+								<li>view - loaded, transformed DOM</li>
+								<li>Code can still be messy...</li>				
+							</ul>
+						</aside>
+
+					</section>
+				</section>
+
+				<section data-background="#9579C6">
+					<section>
+						<h2>Our First Controller <button onclick="window.open('demo/demo2.html')">Demo</button></h2>
+						<aside class="notes">
+							<ul>
+								<li>Now that we've seen the model and the view</li>
+								<li>...AngularJS allows us to create controllers so that we can nicely separate different components of the app</li>
+								<li>Demo - provide a way to display a list of items</li>
+							</ul>
+
+						</aside>
+					</section>
+					<section>
+						<div>
+							<h5>HTML Code</h5>
+					<pre><code data-trim contenteditable>
+&lt;html ng-app="todoApp">						
+	&lt;body ng-controller="TodoCtrl">
+	  <ul>
+	    <li ng-repeat="todo in todos">       
+	      <labeL>
+	        <input type="checkbox"/>{{todo.text}}
+	      </labeL>
+	    </li>
+	  </ul>
+	&lt;/body>
+&lt;/html>
+					</code></pre>
+						</div>
+						<div>
+							<h5>JS Code</h5>
+							<pre><code data-trim contenteditable>
+var app = angular.module('todoApp', []);
+
+app.controller('TodoCtrl', function($scope){
+  $scope.todos = [
+  { text: 'Create presentation', done: true },
+  { text: 'Send email', done: false }
+  ];
+});
+							</code></pre>
+						</div>
+						<aside class="notes">
+							<ul>
+								<li>ng-app directive (on the <html> tag) now specifies the todoApp module</li>
+								<li>controller allows us to establish data-binding between the model and the view.</li>
+								<li> ngController directive, located on the <body> tag. mapped to TodoCtrl</li>
+								<li>controller scope is available to all bindings located within the body tag</li>
+								<li>data to the $scope that was injected into our controller function.</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h3>Upgraded Todo Application <button onclick="window.open('demo/demo3.html')">Demo</button></h3>
+						<ul>
+							<li>Strikethrough of completed tasks</li>
+							<li>Add new task</li>
+							<li>Clear Completed</li>
+						</ul>
+					</section>
+					<section>
+						<div>
+							<h5>HTML Code</h5>
+					<pre><code data-trim contenteditable>
+<style type="text/css">
+  .completed-true {
+    text-decoration: line-through;
+  }
+</style>
+
+<li ng-repeat="todo in todos">       
+  <labeL class="completed-{{todo.done}}">
+    <input type="checkbox" ng-model="todo.done" />
+    {{todo.text}}
+  </labeL>
+</li>
+
+<input type="text" ng-model="newTask" /> 
+<button ng-click="addTask()">Add</button>
+<button ng-click="clearCompleted()">Clear Completed</button>
+					</code></pre>
+						</div>
+						<div>
+							<h5>JS Code</h5>
+							<pre><code data-trim contenteditable>
+$scope.addTask = function() {
+  $scope.todos.push( { text: $scope.newTask, done: false } );
+  $scope.newTask = "";
+}
+
+$scope.clearCompleted = function() {
+  $scope.todos = $scope.todos.filter(function(todo) {
+    return !todo.done;
+  })
+}
+							</code></pre>
+						</div>
+					</section>
+				</section>
+
+				<section data-background="#8c4738">
+					<section>
+						<h2>Testability</h2>
+						<aside class="notes">
+							<ul>
+								<li>stability, inspires confidence, easier to change code, improve the design</li>
+								<li>UI / DOM code separated from business logic, it becomes easier to test business logic</li>
+								<li>Dependency injection can mock out services, providers, etc.</li>
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<div>
+							<h5>Test for addTask()</h5>
+							<pre><code data-trim contenteditable>
+it('+1 task when adding task', function() {
+  var controller = createController(),
+    todosLen = $scope.todos.length;
+
+  $scope.newTask = 'Aha!';
+  $scope.addTask();
+  
+  expect($scope.todos.length).toEqual(todosLen + 1);
+  expect($scope.todos[todosLen].text).toEqual('Aha!');
+});
+  						</code></pre>
+  					</div>
+  					<div>
+							<h5>Test for clearCompleted()</h5>
+							<pre><code data-trim contenteditable>
+it('remove completed items', function() {
+  var controller = createController(),
+    todosLen = $scope.todos.length;
+
+  $scope.newTask = 'Aha!';
+  $scope.addTask();
+  $scope.todos[todosLen].done = false;
+  
+  $scope.clearCompleted();
+
+  expect($scope.todos.length).toEqual(todosLen + 1);
+});
+							</code></pre>
+  					</div>
+  					<aside class="notes">
+  						test cases have no noise. Just pure business logic
+  					</aside>
+					</section>
+				</section>
+
+				<section data-background="#8F9D51">
+					<section>
+						<h2>Imperative vs. Declarative <button onclick="window.open('demo/demo4.html')">Demo</button></h2>
+						<aside class="notes">
+							<ol>
+								<li>Declaratively say what you want to do</li>
+								<li>Reusable</li>
+							</ol>
+						</aside>
+					</section>
+					<section>
+						<div>
+							<h5>HTML Code</h5>
+					<pre><code data-trim contenteditable>
+<alert type="alertType">Summer Photos!</alert>
+
+<carousel>
+  <slide ng-repeat="slide in slides" active="slide.active">
+    <img ng-src="{{slide.image}}" style="margin:auto; height: 405px;">
+    <div class="carousel-caption">
+      <p>{{slide.text}}</p>
+    </div>
+  </slide>
+</carousel>
+					</code></pre>
+						</div>
+						<div>
+							<h5>JS Code</h5>
+							<pre><code data-trim contenteditable>
+var app = angular.module('directivesApp', ['ui.bootstrap']);
+
+app.controller('MyCtrl', function($scope){
+  $scope.alertType = 'success';
+
+  $scope.slides = [
+    { active: true, image: 'images/summer1.jpg', text: 'Summer 1' },
+    { active: false, image: 'images/summer2.jpg', text: 'Summer 2' },
+    { active: false, image: 'images/summer3.jpg', text: 'Summer 3' },
+    { active: false, image: 'images/summer4.jpg', text: 'Summer 4' },
+  ];
+});
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<h2>Float Label Design Pattern <button onclick="window.open('demo/demo5.html');">Demo</button></h2>
+
+						<pre><code data-trim contenteditable>
+<form id="form" class="form" action="#" method="get">
+  <input type="text" placeholder="Your Name" id="name" name="name" tabindex="1" float-label />
+  <input type="email" placeholder="Your Email" id="email" name="email" tabindex="2" float-label />
+  <textarea placeholder="Message…" id="message" name="message" tabindex="3" float-label ></textarea>
+
+  <input type="submit" value="Send Message" id="submit"/>
+</form>
+    				</code></pre>
+					</section>
+				</section>
+
+				
+
+				<section data-background="#EFEE92" >
+					<section>
+						<h2 style="color: #686262;">A<span style="color: #B50E0E;">ng</span>ularJS is awesome</h2>
+					</section>
+					<section>
+						<h5 style="color: #686262;">but, it may <u>NOT</u> always be the best approach...</h5>
+						<ul style="color: #686262;">
+							<li class="fragment" data-fragment-index="1">Lots of AJAX</li>
+							<li class="fragment" data-fragment-index="2">UIs that have complex interactions</li>
+							<li class="fragment" data-fragment-index="3">Single-Page Application Architecture</li>
+						</ul>
+						<aside class="notes">
+							<ul>
+								<li>Just because AngularJS is shiny and cool, it doesn't mean that we absolutely have to use it</li>
+								<li>Just like other frameworks and libraries, we still need to weigh the pros and cons</li>
+								<li>UIs have complex interactions - 2-way data binding, changes in the model will be automatically refected on the view</li>
+								<li>you’re performing a whole bunch of AJAX with jQuery and showing and hiding content</li>
+								
+							</ul>
+						</aside>
+					</section>
+					<section>
+						<h4 style="color: #686262;">There are other MV* frameworks</h4>
+						<div class="fragment" data-fragment-index="1">
+							<a onclick="window.open('http://todomvc.com')"><img src="images/todomvc.com.png" alt="TodoMVC"></a>
+						</div>
+						<aside class="notes">
+							<ul>
+								<li>Just to be fair with the other MV* frameworks, I'd like to mention that there are others out there</li>
+								<li>Addy Osmani and team has done a spendid job of recreating the same application using different MV* frameworks</li>
+								<li>provide separation of concerns</li>
+								<li>enforce coding practices</li>
+								<li>enable the separation of user-interface views from data model and application flow/behavioral logic</li>
+								<li>lead to fine-grain reusable components and well-organized code</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section data-background="#F2C487">
+					<h2 style="color: #443F38">A<span style="color: #B50E0E;">ng</span>ularJS is still awesome!</h2>
+					<div>
+						<span class="fragment" data-fragment-index="1">
+							<img src="images/ng.png" alt="" height="100px" onclick="window.open('http://ngmodules.org/')">
+						</span>
+						<span class="fragment" data-fragment-index="2"><img src="images/google_logo.jpg" alt="" height="100px"></span>
+						<span class="fragment" data-fragment-index="3"><img src="images/angular-batarang.png" alt="" height="100px" style="background: white"></span>
+					</div>
+					<aside class="notes">
+						<ul>
+							<li>Cool Features - 2-way binding, directives, filters, services, i18n</li>
+							<li>What was presented here was just the tip of the iceberg</li>
+							<li>Huge community, with google's backing</li>
+							<li>Nice tools such us batarang</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section >
+					<div>
+						<img src="images/infinity.jpg" alt="What's next?" height="300px">
+					</div>
+					<ul>
+						<li><a href="http://docs.angularjs.org/tutorial">http://docs.angularjs.org/tutorial</a></li>
+						<li><a href="http://www.thinkster.io/">http://www.thinkster.io/</a></li>
+						<li><a href="https://egghead.io/">https://egghead.io/</a></li>
+					</ul>
+				</section>
+
+				<section data-background="#e282A6">
+					<h2>Thank you!</h2>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				
+				theme: 'night',
+    		transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
+    		backgroundTransition: 'slide',
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+</script>
+
+</body>
+</html>
